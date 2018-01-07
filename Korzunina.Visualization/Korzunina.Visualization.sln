@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Korzunina.Visualization", "Korzunina.Visualization\Korzunina.Visualization.csproj", "{16F2B12E-39D8-4D6E-B301-165E75330548}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Korzunina.Logic", "Korzunina.Logic\Korzunina.Logic.csproj", "{C48C637C-E845-4439-A581-5F5D40ED380A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{16F2B12E-39D8-4D6E-B301-165E75330548}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16F2B12E-39D8-4D6E-B301-165E75330548}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16F2B12E-39D8-4D6E-B301-165E75330548}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16F2B12E-39D8-4D6E-B301-165E75330548}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C48C637C-E845-4439-A581-5F5D40ED380A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C48C637C-E845-4439-A581-5F5D40ED380A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C48C637C-E845-4439-A581-5F5D40ED380A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C48C637C-E845-4439-A581-5F5D40ED380A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
