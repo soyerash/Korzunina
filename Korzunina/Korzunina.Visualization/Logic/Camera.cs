@@ -7,7 +7,7 @@ namespace Korzunina.Visualization.Logic
         private double[] _Ov = new double[3];     // координаты точки экранной плоскости, расположенной напротив наблюдателя
         private double[] _N  = new double[3];     // вектор нормали к экранной плоскости
         private double[] _T  = new double[3];     // вектор, задающий вертикальное направление для наблюдателя
-        public double _D;                          // расстояние от наблюдателя до экрана
+        public double D;                          // расстояние от наблюдателя до экрана
                            
                
 
@@ -37,8 +37,8 @@ namespace Korzunina.Visualization.Logic
 
         public void UpdateD(double k)
         {
-                _D *= k;
-                if (_D < 5) _D = 5;
+                D *= k;
+                if (D < 5) D = 5;
                 transform = MatrixTransformViewToProjec() * TransformWorldToView();
         }
         public void Update(double[] a, double[] b, double[] c, double d)
@@ -49,7 +49,7 @@ namespace Korzunina.Visualization.Logic
                 _N[i] = b[i];
                 _T[i] = c[i];
             }
-            _D = d;
+            D = d;
             transform = MatrixTransformViewToProjec() * TransformWorldToView();
         }
 
@@ -83,7 +83,7 @@ namespace Korzunina.Visualization.Logic
         {
             Matrix TransformMatrix = new Matrix(3, 4);
             TransformMatrix.setElem(2, 3, 1);
-            TransformMatrix.setElem(2, 2, -1 / _D);
+            TransformMatrix.setElem(2, 2, -1 / D);
             return TransformMatrix;
         }
 

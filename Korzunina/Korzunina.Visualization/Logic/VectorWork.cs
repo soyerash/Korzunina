@@ -4,7 +4,6 @@ namespace Korzunina.Visualization.Logic
 {
     static class VectorWork
     {
-
         public static double Norma(double[] a)
         {
             double norma = 0;

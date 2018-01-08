@@ -4,79 +4,79 @@ using System.Linq;
 
 namespace Korzunina.Visualization.Logic
 {
-    class Matrix
+    public class Matrix
     {
-        private int n, m;
-        private double[,] matr;
+        private int _n, _m;
+        private double[,] _matr;
 
         public Matrix(int N, int M)
         {
-            n = N;
-            m = M;
-            matr = new double[N, M];
+            _n = N;
+            _m = M;
+            _matr = new double[N, M];
             for (int i = 0; i < N; i++)
                 for (int j = 0; j < M; j++)
-                    if (i != j) matr[i, j] = 0;
-                    else matr[i, j] = 1;
+                    if (i != j) _matr[i, j] = 0;
+                    else _matr[i, j] = 1;
         }
         public Matrix(double[,] a)
         {
-            n = a.GetLength(0);
-            m = a.GetLength(1);
-            matr = new double[n, m];
-            for (int i = 0; i < n; i++)
-                for (int j = 0; j < m; j++)
-                    matr[i, j] = a[i, j];
+            _n = a.GetLength(0);
+            _m = a.GetLength(1);
+            _matr = new double[_n, _m];
+            for (int i = 0; i < _n; i++)
+                for (int j = 0; j < _m; j++)
+                    _matr[i, j] = a[i, j];
         }
         public Matrix(string namefile)
         {
             StreamReader fs = new StreamReader(namefile);
             var modelInfo = fs.ReadToEnd().Split(' ', '\r', '\n').ToList(); //modelInfo - это список всех слов, чисел и символов, заключённых между пробелами и переводами строк
-            n = Convert.ToInt32(modelInfo[0]);
-            m = Convert.ToInt32(modelInfo[1]);
-            matr = new double[n, m];
+            _n = Convert.ToInt32(modelInfo[0]);
+            _m = Convert.ToInt32(modelInfo[1]);
+            _matr = new double[_n, _m];
             int k = 3;
-            for (var i = 0; i < n; i++)
-                for (var j = 0; j < m; j++)
+            for (var i = 0; i < _n; i++)
+                for (var j = 0; j < _m; j++)
                 {
                     while (modelInfo[k] == "") k++;
-                    matr[i, j] = Convert.ToInt32(modelInfo[k++]);
+                    _matr[i, j] = Convert.ToInt32(modelInfo[k++]);
                 }
             modelInfo.RemoveRange(0, modelInfo.Count);
         }
         public Matrix(double[,] a, int N, int M)
         {
-            matr = new double[N,M];
-            n = N;
-            m = M;
+            _matr = new double[N,M];
+            _n = N;
+            _m = M;
             for (int i = 0; i < N; i++)
                 for (int j = 0; j < M; j++)
-                    matr[i, j] = a[i, j];
+                    _matr[i, j] = a[i, j];
         }
 
         public int getN()
         {
-            return n;
+            return _n;
         }
         public int getM()
         {
-            return m;
+            return _m;
         }
         public double getElem(int i, int j)
         {
-            return matr[i, j];
+            return _matr[i, j];
         }
         public void setElem(int i, int j, double a)
         {
-            this.matr[i, j] = a;
+            this._matr[i, j] = a;
         }
 
         public void Show()
         {
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < _n; i++)
             {
-                for (int j = 0; j < m; j++)
-                    Console.Write(matr[i, j] + " ");
+                for (int j = 0; j < _m; j++)
+                    Console.Write(_matr[i, j] + " ");
                 Console.WriteLine();
             }
         }
@@ -94,7 +94,7 @@ namespace Korzunina.Visualization.Logic
                 for (var j = 0; j < M; j++)
                 {
                     while (modelInfo[k] == "") k++;
-                    c.matr[i, j] = Convert.ToInt32(modelInfo[k++]);
+                    c._matr[i, j] = Convert.ToInt32(modelInfo[k++]);
                 }
             modelInfo.RemoveRange(0, modelInfo.Count);
             return c;
@@ -112,9 +112,9 @@ namespace Korzunina.Visualization.Logic
                     double v = 0;
                     for (int k = 0; k < a.getM(); k++)
                     {
-                        v += a.matr[i, k] * b.matr[k, j];
+                        v += a._matr[i, k] * b._matr[k, j];
                     }
-                    c.matr[i, j] = v;
+                    c._matr[i, j] = v;
                 }
             }
             return c;
@@ -126,19 +126,19 @@ namespace Korzunina.Visualization.Logic
             {
                 for (int j = 0; j < a.getM(); j++)
                 {
-                    c.matr[i, j] = a.matr[i,j]  * b;
+                    c._matr[i, j] = a._matr[i,j]  * b;
                 }
             }
             return c;
         }
         public static double[] operator *(Matrix a, double[] b)
         {
-            double[] c = new double[a.n];
-            for (int i = 0; i < a.n; i++)
+            double[] c = new double[a._n];
+            for (int i = 0; i < a._n; i++)
             {
-                for (int j = 0; j < a.m; j++)
+                for (int j = 0; j < a._m; j++)
                 {
-                    c[i] += a.matr[i, j] * b[j];
+                    c[i] += a._matr[i, j] * b[j];
                 }
             }
             return c;
@@ -150,7 +150,7 @@ namespace Korzunina.Visualization.Logic
             {
                 for (int j = 0; j < a.getN(); j++)
                 {
-                    c.matr[i, j] = a.matr[i, j] + b.matr[i, j];
+                    c._matr[i, j] = a._matr[i, j] + b._matr[i, j];
                 }
             }
             return c;
@@ -162,7 +162,7 @@ namespace Korzunina.Visualization.Logic
             {
                 for (int j = 0; j < a.getN(); j++)
                 {
-                    c.matr[i, j] = a.matr[i, j] - b.matr[i, j];
+                    c._matr[i, j] = a._matr[i, j] - b._matr[i, j];
                 }
             }
             return c;
